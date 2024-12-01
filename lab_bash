@@ -1,0 +1,26 @@
+#!/bin/bash
+
+sort_arr() {
+    arr=("$@")
+    len_arr=${#arr[@]}
+    for (( i = 0; i < len_arr; i++ ))
+	do
+        for (( j = 0; j < len_arr - i - 1; j++ ))
+	    do
+            if (( arr[j] > arr[j + 1] ))
+		then
+                     gol=${arr[j]}
+                     arr[j]=${arr[j + 1]}
+               	     arr[j + 1]=$gol
+            fi
+        done
+    done
+    echo "${arr[@]}"
+}
+
+sorted_arr=$(sort_arr "$@")
+echo "Введенный отсортированный массив: $sorted_arr"
+
+#Алла Владимировна, вот параметры для запуска, на всякий случай!
+# chmod +x lab_bash
+# ./lab_bash (введенный вами массив), у меня четвертый вариант
